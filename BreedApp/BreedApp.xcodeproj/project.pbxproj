@@ -14,19 +14,11 @@
 			remoteGlobalIDString = 081DDBF72CF085140088B248;
 			remoteInfo = BreedApp;
 		};
-		081DDC132CF085160088B248 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 081DDBF02CF085140088B248 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 081DDBF72CF085140088B248;
-			remoteInfo = BreedApp;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		081DDBF82CF085140088B248 /* BreedApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BreedApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		081DDC082CF085160088B248 /* BreedAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BreedAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		081DDC122CF085160088B248 /* BreedAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BreedAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -57,13 +49,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		081DDC0F2CF085160088B248 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -81,7 +66,6 @@
 			children = (
 				081DDBF82CF085140088B248 /* BreedApp.app */,
 				081DDC082CF085160088B248 /* BreedAppTests.xctest */,
-				081DDC122CF085160088B248 /* BreedAppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -134,26 +118,6 @@
 			productReference = 081DDC082CF085160088B248 /* BreedAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		081DDC112CF085160088B248 /* BreedAppUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 081DDC222CF085160088B248 /* Build configuration list for PBXNativeTarget "BreedAppUITests" */;
-			buildPhases = (
-				081DDC0E2CF085160088B248 /* Sources */,
-				081DDC0F2CF085160088B248 /* Frameworks */,
-				081DDC102CF085160088B248 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				081DDC142CF085160088B248 /* PBXTargetDependency */,
-			);
-			name = BreedAppUITests;
-			packageProductDependencies = (
-			);
-			productName = BreedAppUITests;
-			productReference = 081DDC122CF085160088B248 /* BreedAppUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -168,10 +132,6 @@
 						CreatedOnToolsVersion = 16.0;
 					};
 					081DDC072CF085160088B248 = {
-						CreatedOnToolsVersion = 16.0;
-						TestTargetID = 081DDBF72CF085140088B248;
-					};
-					081DDC112CF085160088B248 = {
 						CreatedOnToolsVersion = 16.0;
 						TestTargetID = 081DDBF72CF085140088B248;
 					};
@@ -193,7 +153,6 @@
 			targets = (
 				081DDBF72CF085140088B248 /* BreedApp */,
 				081DDC072CF085160088B248 /* BreedAppTests */,
-				081DDC112CF085160088B248 /* BreedAppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -207,13 +166,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		081DDC062CF085160088B248 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		081DDC102CF085160088B248 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -237,13 +189,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		081DDC0E2CF085160088B248 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -251,11 +196,6 @@
 			isa = PBXTargetDependency;
 			target = 081DDBF72CF085140088B248 /* BreedApp */;
 			targetProxy = 081DDC092CF085160088B248 /* PBXContainerItemProxy */;
-		};
-		081DDC142CF085160088B248 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 081DDBF72CF085140088B248 /* BreedApp */;
-			targetProxy = 081DDC132CF085160088B248 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -475,40 +415,6 @@
 			};
 			name = Release;
 		};
-		081DDC232CF085160088B248 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 82JRS96G7R;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = molodets.BreedAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = BreedApp;
-			};
-			name = Debug;
-		};
-		081DDC242CF085160088B248 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 82JRS96G7R;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = molodets.BreedAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = BreedApp;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -535,15 +441,6 @@
 			buildConfigurations = (
 				081DDC202CF085160088B248 /* Debug */,
 				081DDC212CF085160088B248 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		081DDC222CF085160088B248 /* Build configuration list for PBXNativeTarget "BreedAppUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				081DDC232CF085160088B248 /* Debug */,
-				081DDC242CF085160088B248 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
