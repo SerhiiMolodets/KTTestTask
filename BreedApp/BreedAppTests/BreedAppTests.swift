@@ -8,29 +8,88 @@
 import XCTest
 @testable import BreedApp
 
-final class BreedAppTests: XCTestCase {
+import XCTest
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+@MainActor
+final class BreedsViewModelTests: XCTestCase {
+    var mockClient: MockBreedAppClient!
+    var viewModel: BreedsViewModel!
+    
+    override func setUp() {
+        super.setUp()
+        mockClient = MockBreedAppClient()
+        viewModel = BreedsViewModel(apiClient: mockClient)
+    }
+    
+    override func tearDown() {
+        mockClient = nil
+        viewModel = nil
+        super.tearDown()
+    }
+    
+    func testGetBreedsSuccess() async {
+        
+        let testBreeds = [
+            Breed(id: "1", name: "Test1", description: "Test1", temperament: "Test1", referenceImageId: "Test1"),
+            Breed(id: "2", name: "Test2", description: "Test2", temperament: "Test2", referenceImageId: "Test2")
+        ]
+        
+        let testImage = BreedImage(url: "etstst", id: "test")
+        mockClient.breedsResponse = testBreeds
+        mockClient.imageResponse = testImage
+        
+        await viewModel.getBreeds()
+        
+        XCTAssertEqual(viewModel.breeds.count, 2)
+        XCTAssertEqual(viewModel.breeds.first?.name, "Test1")
+        XCTAssertFalse(viewModel.isLoading)
+    }
+    
+    func testGetBreedsFailure() async {
+        mockClient.shouldThrowError = true
+    
+        await viewModel.getBreeds()
+        
+        XCTAssertTrue(viewModel.breeds.isEmpty, "Breeds should be empty on failure")
+        XCTAssertFalse(viewModel.isLoading, "Loading should be false after failure")
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    func testGetImagesForBreedsSuccess() async {
+        let testBreeds = [
+            Breed(id: "1", name: "Test1", description: "Test1", temperament: "Test1", referenceImageId: "Test1")
+        ]
+        let testImage = BreedImage(url: "https://example.com/image.jpg", id: "testId")
+        mockClient.breedsResponse = testBreeds
+        mockClient.imageResponse = testImage
+        await viewModel.getBreeds()
+        
+        XCTAssertEqual(viewModel.breeds.first?.breedImage?.url, "https://example.com/image.jpg")
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+    func testGetImagesForBreedsFailure() async {
+        let testBreeds = [
+            Breed(id: "1", name: "Test1", description: "Test1", temperament: "Test1", referenceImageId: "Test1")
+        ]
+        mockClient.breedsResponse = testBreeds
+        mockClient.shouldThrowError = true
+        
+        await viewModel.getBreeds()
+        
+        XCTAssertNil(viewModel.breeds.first?.breedImage)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testFilteringBreeds() {
+        let testBreeds = [
+            Breed(id: "1", name: "Test1", description: "Test1", temperament: "Test1", referenceImageId: "Test1"),
+            Breed(id: "2", name: "Test2", description: "Test2", temperament: "Test2", referenceImageId: "Test2")
+        ]
+        viewModel.breeds = testBreeds
+        
+        viewModel.searchText = "Test2"
+        
+        XCTAssertEqual(viewModel.filteredBreeds.count, 1)
+        XCTAssertEqual(viewModel.filteredBreeds.first?.name, "Test2")
     }
-
 }
+
