@@ -12,6 +12,7 @@ struct MainView: View {
     
     var body: some View {
         contentView
+            .banner(bannerManager: viewModel.bannerManager)
             .task {
                 await viewModel.getBreeds()
                 print(viewModel.breeds)
