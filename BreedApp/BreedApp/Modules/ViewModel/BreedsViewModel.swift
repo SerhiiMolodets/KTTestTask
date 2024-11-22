@@ -13,6 +13,7 @@ class BreedsViewModel {
     var searchText: String = ""
     var isLoading: Bool = false
     private let apiClient: BreedAppClient
+    let bannerManager: NotificationBannerManager = .init()
     
     var filteredBreeds: [Breed] {
         if searchText.isEmpty {
@@ -33,7 +34,9 @@ class BreedsViewModel {
             breeds = gotBreeds
             await getImagesForBreeds()
         } catch {
-            print("Error fetching breeds: \(error)")
+            await MainActor.run {
+                bannerManager.showBanner(title: "Error", detail: error.localizedDescription, type: .error)
+            }
         }
         isLoading = false
     }
@@ -45,7 +48,9 @@ class BreedsViewModel {
                 let image = try await apiClient.getImage(for: imageId)
                     breeds[index].breedImage = image
             } catch {
-                print("Error fetching image for breed \(breeds[index].id): \(error)")
+                await MainActor.run {
+                    bannerManager.showBanner(title: "Error", detail: error.localizedDescription, type: .error)
+                }
             }
         }
     }
