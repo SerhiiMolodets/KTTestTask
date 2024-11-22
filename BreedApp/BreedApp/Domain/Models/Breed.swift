@@ -13,4 +13,5 @@ struct Breed: Codable, Identifiable {
     let description: String
     let temperament: String
     let referenceImageId: String?
+    var breedImage: BreedImage?
 }
